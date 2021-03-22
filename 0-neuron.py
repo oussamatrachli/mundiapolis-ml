@@ -9,3 +9,4 @@ class Neuron:
         self.W = np.random.normal()
         self.b = 0
         self.A = 0
+        
