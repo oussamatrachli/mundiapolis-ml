@@ -29,17 +29,5 @@ class Neuron:
         return cost
 
     def evaluate(self, X, Y):
-        num_cols = Y.shape[0]
-        print(num_cols)
-        prediction = np.random.randint(0,1,(1,num_cols))
-        print("prediction :",prediction)
-
-        counter = 0
-        for x in Y:
-            if x >= 0.5:
-                prediction[0][counter]= 1
-                counter += 1
-            else:
-                prediction[0][counter] = 0
-                counter += 1
-        return prediction
+        self.forward_prop(X)
+        return np.where(self.A <= 0.5, 0, 1), self.cost(Y, self.A)
